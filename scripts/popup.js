@@ -110,6 +110,11 @@ const highlighing = (jsPathStr) => {
     ? "highlighing match"
     : "Remove highlighing";
 
+  output.value =
+    "paste in console:👇\n" +
+    jsPathStr +
+    (showElements ? addStyleStr : removeStyleStr);
+
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(
       tabs[0].id,

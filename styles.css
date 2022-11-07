@@ -1,3 +1,14 @@
 html {
-  width: 500px;
+  width: 600px;
+  padding-top: 5px;
+  background-color: #459177;
+}
+body {
+  background-color: #30363c;
+  color: rgb(214, 209, 203);
+}
+
+textarea {
+  background-color: #088f9821 !important;
+  color: rgb(214, 209, 203) !important;
 }

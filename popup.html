@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <title>ext jsPath</title>
+  <title>Selector Converter</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="mage/png" href="images/icon/icon-16.png" />
 
@@ -15,35 +15,38 @@
 <body>
   <div class="container">
 
-    <div class="mb-3">
-      <label class="form-label">JS path converter</label>
+    <div class="mb-1 pt-1">
+      <h5 class="form-label"> Selector Converter </h5>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-1">
       <div class="form-floating">
         <textarea id="jspath" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
           style="height: 200px"></textarea>
-        <label for="floatingTextarea2">JS Path</label>
-
-        <div class="input-group mb-3">
-          <button id="convert-btn" class="btn btn-outline-primary" type="button" id="button-addon1">
-            Convert
-          </button>
-          <button id="Highlighting-btn" class="btn btn-outline-info" type="button" id="button-addon1">
-            Show match
-          </button>
-          <select id="outputType" class="form-select form-select-sm" aria-label=".form-select-sm example">
-            <option value="0" selected>Wdio - Deep Selector</option>
-            <option value="1">Wdio - shadow$ Selector</option>
-            <option value="2">Wdio - Deep Selector Short 🔧</option>
-            <option value="3">Protractor - Selector css_sr</option>
-            <option value="4">querySelector - short</option>
-          </select>
-        </div>
+        <label for="floatingTextarea2">Last Selector</label>
       </div>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-1">
+      <div class="input-group mb-3">
+        <button id="convert-btn" class="btn btn-outline-warning" type="button" id="button-addon1">
+          Convert
+          <img src="/images/icon/icon-16.png" alt="logo">
+        </button>
+        <button id="Highlighting-btn" class="btn btn-outline-info" type="button" id="button-addon1">
+          Show match
+        </button>
+        <select id="outputType" class="form-select form-select-sm" aria-label=".form-select-sm example">
+          <option value="0" selected>Wdio - Deep Selector</option>
+          <option value="1">Wdio - shadow$ Selector</option>
+          <option value="2">Wdio - Deep Selector Short 🔧</option>
+          <option value="3">Protractor - Selector css_sr</option>
+          <option value="4">querySelector - short</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3 pb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Output</label>
       <textarea id="output" class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="6"></textarea>
     </div>

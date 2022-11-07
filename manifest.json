@@ -3,7 +3,7 @@
   "name": "selectors coverter",
   "description": "convert web selectors",
   "version": "1.0",
-  "permissions": ["storage", "tabs", "activeTab"],
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
 
   "content_scripts": [
     {
