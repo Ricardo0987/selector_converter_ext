@@ -5,7 +5,7 @@
 ## Notes
 
 - bootstrap CDN is used
-- to run locally just open `index.html`
+- to run locally just open `popup.html`
 
 ## Links
 
