@@ -1,12 +1,17 @@
-let showElements = true;
+let isShowingElements;
 
 const convertBtn = document.querySelector("#convert-btn");
-const highlighBtn = document.querySelector("#Highlighting-btn");
+const highlightBtn = document.querySelector("#Highlighting-btn");
 const jspath = document.querySelector("#jspath");
 const outputType = document.querySelector("#outputType");
 const output = document.querySelector("#output");
 
 try {
+  chrome.storage.sync.get(["showElements"], function (result) {
+    isShowingElements = result.showElements || false;
+    toggleHighlighting(isShowingElements);
+  });
+
   chrome.storage.sync.get(["jsPathSelectorStr"], function (result) {
     jspath.value = result.jsPathSelectorStr || "";
   });
@@ -95,30 +100,36 @@ const convert = (jsPathSelectorStr, outputType) => {
   return select[outputType.value];
 };
 
-const highlighing = (jsPathStr) => {
-  const addStyleStr =
-    ".setAttribute('style','background-color:red;transition: all 1s linear')";
-  const removeStyleStr =
-    ".setAttribute('style','background-color:initial;transition: all 1s linear')";
+const toggleHighlighting = (isHighlighting, jsPathStr) => {
+  let outputStr = "";
+  if (isHighlighting) {
+    highlightBtn.innerHTML = "Remove highlighting";
+    outputStr =
+      ".setAttribute('style','background-color:red;transition: all 1s linear')";
+  } else {
+    highlightBtn.innerHTML = "highlighting match";
+    outputStr =
+      ".setAttribute('style','background-color:initial;transition: all 1s linear')";
+  }
 
-  highlighBtn.innerHTML = showElements
-    ? "highlighing match"
-    : "Remove highlighing";
-
-  output.value =
-    "paste in console:👇\n" +
-    jsPathStr +
-    (showElements ? addStyleStr : removeStyleStr);
+  output.value = jsPathStr
+    ? "paste in console:👇\n" + jsPathStr + outputStr
+    : "";
 
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(
       tabs[0].id,
       {
-        scriptStr: jsPathStr + (showElements ? addStyleStr : removeStyleStr),
+        scriptStr: jsPathStr + outputStr,
       },
       function (response) {
         console.log(response);
-        showElements = !showElements; //toggle boolean status
+        isShowingElements = !isShowingElements; //toggle boolean status
+        try {
+          chrome.storage.sync.set({ isHighlighting });
+        } catch (e) {
+          console.log(e);
+        }
       }
     );
   });
@@ -129,6 +140,6 @@ convertBtn.addEventListener("click", (event) => {
   output.value = convertOutput;
 });
 
-highlighBtn.addEventListener("click", (event) => {
-  highlighing(jspath.value);
+highlightBtn.addEventListener("click", (event) => {
+  toggleHighlighting(isShowingElements, jspath.value);
 });
