@@ -99,17 +99,29 @@ const convert = (jsPathSelectorStr, outputType) => {
 };
 
 const highlighing = (jsPathStr) => {
-  alert("working on it🔧");
-  const addStyleStr =
-    ".setAttribute('style', 'background-color:red;transition: all 1s linear')";
-  const removeStyleStr =
-    ".setAttribute('style', 'background-color:initial;transition: all 1s linear')";
+  // alert("working on it🔧");
 
-  //   eval(jsPathStr + (showElements ? addStyleStr : removeStyleStr)); //FIXME: from content script https://developer.chrome.com/docs/extensions/mv3/content_scripts/
-  showElements = !showElements;
+  const addStyleStr =
+    ".setAttribute('style','background-color:red;transition: all 1s linear')";
+  const removeStyleStr =
+    ".setAttribute('style','background-color:initial;transition: all 1s linear')";
+
   highlighBtn.innerHTML = showElements
     ? "highlighing match"
     : "Remove highlighing";
+
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(
+      tabs[0].id,
+      {
+        scriptStr: jsPathStr + (showElements ? addStyleStr : removeStyleStr),
+      },
+      function (response) {
+        console.log(response);
+        showElements = !showElements; //toggle boolean status
+      }
+    );
+  });
 };
 
 convertBtn.addEventListener("click", (event) => {
