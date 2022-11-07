@@ -2,11 +2,10 @@
 
 ![Logo Convert Selectors](icon/icon-512.png "logo")
 
-
-
 ## Notes
 
-- is used CDN of bootstrap
+- bootstrap CDN is used
+- to run locally just open `index.html`
 
 ## Links
 
