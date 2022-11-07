@@ -14,9 +14,6 @@ try {
   console.log(e);
 }
 
-//FIXME: remove just for test
-// jspath.value = `document.querySelector("body > div.webapp.ng-scope > div.topbar-dash.dashbar.ng-scope > div.blue-top-bar.ng-scope > div > div.tab.active")`;
-
 const convert = (jsPathSelectorStr, outputType) => {
   const regex = /document.querySelector/;
   const regex2 = /shadowRoot.querySelector/g;
@@ -99,8 +96,6 @@ const convert = (jsPathSelectorStr, outputType) => {
 };
 
 const highlighing = (jsPathStr) => {
-  // alert("working on it🔧");
-
   const addStyleStr =
     ".setAttribute('style','background-color:red;transition: all 1s linear')";
   const removeStyleStr =
