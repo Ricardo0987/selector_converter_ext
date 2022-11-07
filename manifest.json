@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "query wdio-coverter",
+  "description": "convert JS path to wdio selectors",
+  "version": "1.0",
+  "permissions": ["storage"],
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.com/*"],
+      "js": ["scripts/content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "main.html",
+    "default_icon": {
+      "16": "images/icon/icon-16.png",
+      "32": "images/icon/icon-32.png",
+      "128": "images/icon/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon/icon-16.png",
+    "32": "images/icon/icon-32.png",
+    "128": "images/icon/icon-128.png"
+  }
+}
