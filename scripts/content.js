@@ -3,6 +3,5 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   //   document.body.style.backgroundColor = "orange";
   //   eval(request.script);
   console.log(request.scriptStr);
-
   sendResponse({ statusMsg: "ok" });
 });
