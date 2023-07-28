@@ -1,11 +1,10 @@
-# Chrome Extension - Convert Selectors
+# Chrome Extension - Convert Selectors ![Logo Convert Selectors](images/icon/icon-32.png "logo")
 
-![Logo Convert Selectors](icon/icon-512.png "logo")
 
 ## Notes
 
 - bootstrap CDN is used
-- to run locally just open `popup.html`
+- to run locally just open `index.html`
 
 ## Links
 
